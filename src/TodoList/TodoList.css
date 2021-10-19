@@ -1,4 +1,9 @@
 ul {
   margin: 10px;
+  font-size: .85rem;
   list-style-type: none;
+}
+
+strong {
+  color: purple;
 }

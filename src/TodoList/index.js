@@ -5,9 +5,16 @@ import './TodoList.css';
 function TodoList(props) {
   const todosFiltered = props.todos.filter(todo => todo.text.toLocaleLowerCase().includes(props.searchValue.toLocaleLowerCase()));
 
+  const filteredCompleted = todosFiltered.filter(todo => todo.completed).length;
+  const filteredTotal = todosFiltered.length;
+
   return (
     <section>
       <ul>
+        { props.searchValue && <h2>
+        Has completado {filteredCompleted} de {filteredTotal} TODO{filteredTotal !== 1 && `s`} <strong>FILTRADO{filteredTotal !== 1 && `s`}</strong> 
+      </h2> }
+      
         {todosFiltered
           .map(todo => 
             <TodoItem 
