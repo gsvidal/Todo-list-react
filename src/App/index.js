@@ -8,30 +8,42 @@ import { AppUI } from './AppUI';
 //   { text: "Llorar con la cebolla", completed: true },
 // ]
 
-function App() {
+//Custom hook useLocalStorage
+function useLocalStorage(itemName, initialValue) {
   //Local storage
-  const localStorageTodos = localStorage.getItem("TODOS_V1");
-  let parsedTodos;
+  const localStorageItem = localStorage.getItem(itemName);
+  let parsedItem;
 
-  if(!localStorageTodos) {
-    localStorage.setItem("TODOS_V1", JSON.stringify([]));
-    parsedTodos = [];
+  if(!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = [];
   } else {
-    parsedTodos = JSON.parse(localStorageTodos);
+    parsedItem = JSON.parse(localStorageItem);
     }
 
-  const [todos, setTodos] = React.useState(parsedTodos);
+  const [item, setItem] = React.useState(parsedItem);
+
+  //Make local storaged data it's show in state
+  const saveItem = (item) => {
+    localStorage.setItem(itemName, JSON.stringify(item));
+    setItem(item);
+  }
+
+  return [
+    item,
+    saveItem,
+  ];
+}
+
+function App() {
+
+  // const [patito, savePatito] = useLocalStorage("PATITO_V1", "fernando");
+  const [todos, saveTodos] = useLocalStorage("TODOS_V1", []);
   const [searchValue, setSearchValue] = React.useState("");
 
   //TodoSearch
   const completedTodos = todos.filter(todo => todo.completed).length;
   const totalTodos = todos.length;
-
-  //Make local storaged data it's show in state
-  const saveTodos = (todos) => {
-    localStorage.setItem("TODOS_V1", JSON.stringify(todos));
-    setTodos(todos);
-  }
 
   //Complete and delete Todos(x item)
   const completeTodos = (text) => {
@@ -58,7 +70,7 @@ function App() {
       completeTodos={completeTodos}
       deleteTodos={deleteTodos}
     />
-  );
+    );
 }
 
 export default App;
