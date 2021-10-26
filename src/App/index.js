@@ -36,7 +36,6 @@ function useLocalStorage(itemName, initialValue) {
 }
 
 function App() {
-
   // const [patito, savePatito] = useLocalStorage("PATITO_V1", "fernando");
   const [todos, saveTodos] = useLocalStorage("TODOS_V1", []);
   const [searchValue, setSearchValue] = React.useState("");
@@ -59,6 +58,24 @@ function App() {
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   }
+
+  // // componentDidMount
+  // React.useEffect(() => {
+  //   console.log("componentDidMount");
+  // }, []);
+
+  // // componentDidUpdate
+  // React.useEffect(() => {
+  //   console.log("componentDidUpdate")
+  // }, [todos, searchValue]);
+
+  //componentWillUnmount
+  // React.useEffect(() => {
+  //   console.log("componentDidMount");
+  //   return () => {
+  //     console.log("componentWillUnmount")
+  //   }
+  // }, []);
 
   return (
     <AppUI 

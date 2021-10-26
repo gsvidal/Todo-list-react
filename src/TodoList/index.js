@@ -10,6 +10,7 @@ function TodoList(props) {
 
   return (
     <section>
+
       <ul>
         { props.searchValue && <h2>
         Has completado {filteredCompleted} de {filteredTotal} TODO{filteredTotal !== 1 && `s`} <strong>FILTRADO{filteredTotal !== 1 && `s`}</strong> 
