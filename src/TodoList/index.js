@@ -7,10 +7,12 @@ function TodoList(props) {
 
   const filteredCompleted = todosFiltered.filter(todo => todo.completed).length;
   const filteredTotal = todosFiltered.length;
-
   return (
     <section>
-
+     
+      {props.error && <p>Hubo un error</p>}
+      {props.loading && <p>Estamos cargando...</p>}
+      {(!props.loading && !props.todos.length && !props.error) && <p>Crea tu primer TODO!</p> }
       <ul>
         { props.searchValue && <h2>
         Has completado {filteredCompleted} de {filteredTotal} TODO{filteredTotal !== 1 && `s`} <strong>FILTRADO{filteredTotal !== 1 && `s`}</strong> 

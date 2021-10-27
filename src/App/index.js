@@ -10,34 +10,62 @@ import { AppUI } from './AppUI';
 
 //Custom hook useLocalStorage
 function useLocalStorage(itemName, initialValue) {
-  //Local storage
-  const localStorageItem = localStorage.getItem(itemName);
-  let parsedItem;
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(false);
+  const [item, setItem] = React.useState(initialValue);
 
-  if(!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-    parsedItem = [];
-  } else {
-    parsedItem = JSON.parse(localStorageItem);
-    }
+  React.useEffect(() => {
+    setTimeout(() => {
+      try {
+        //Local storage
+        const localStorageItem = localStorage.getItem(itemName);
+        let parsedItem;
 
-  const [item, setItem] = React.useState(parsedItem);
+        if(!localStorageItem) {
+          localStorage.setItem(itemName, JSON.stringify(initialValue));
+          parsedItem = [];
+        } else {
+          parsedItem = JSON.parse(localStorageItem);
+          }
+
+        setItem(parsedItem);  
+        setLoading(false);
+        // throw new Error();
+      } catch(error) {
+        setError(true);
+      }
+      
+    }, 1000)
+  });
+  
 
   //Make local storaged data it's show in state
   const saveItem = (item) => {
-    localStorage.setItem(itemName, JSON.stringify(item));
-    setItem(item);
+    try {
+      localStorage.setItem(itemName, JSON.stringify(item));
+      setItem(item);
+    } catch(error) {
+      setError(true);
+    }
   }
 
-  return [
+  return {
     item,
     saveItem,
-  ];
+    loading,
+    error,
+  }
+
 }
 
 function App() {
   // const [patito, savePatito] = useLocalStorage("PATITO_V1", "fernando");
-  const [todos, saveTodos] = useLocalStorage("TODOS_V1", []);
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage("TODOS_V1", []);
   const [searchValue, setSearchValue] = React.useState("");
 
   //TodoSearch
@@ -59,26 +87,10 @@ function App() {
     saveTodos(newTodos);
   }
 
-  // // componentDidMount
-  // React.useEffect(() => {
-  //   console.log("componentDidMount");
-  // }, []);
-
-  // // componentDidUpdate
-  // React.useEffect(() => {
-  //   console.log("componentDidUpdate")
-  // }, [todos, searchValue]);
-
-  //componentWillUnmount
-  // React.useEffect(() => {
-  //   console.log("componentDidMount");
-  //   return () => {
-  //     console.log("componentWillUnmount")
-  //   }
-  // }, []);
-
   return (
     <AppUI 
+      loading={loading}
+      error={error}
       completedTodos={completedTodos}
       totalTodos={totalTodos}
       searchValue={searchValue}
