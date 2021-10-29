@@ -1,5 +1,6 @@
 import React from 'react';
 import { TodoContext } from '../TodoContext';
+import './TodoCounter.css';
 
 function TodoCounter() {
   const {
@@ -9,7 +10,7 @@ function TodoCounter() {
   
   return (
     <>
-      <h2>Has completado {completedTodos} de {totalTodos} TODO{totalTodos !== 1 && `s`}</h2>
+      <h2>You've completed {completedTodos} of {totalTodos} TODO{totalTodos !== 1 && `s`}</h2>
     </>
   );
 }

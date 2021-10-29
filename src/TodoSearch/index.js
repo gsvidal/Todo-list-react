@@ -14,11 +14,11 @@ function TodoSearch() {
 
   return (
       <section>
-        <label htmlFor="todo">To Do Search:</label>
+        <label htmlFor="todo">Search:</label>
         <input  
           id="todo" 
           type="text" 
-          placeholder="Cebolla"
+          placeholder="Searching a To Do..."
           className="TodoSearch"
           value={searchValue}
           onChange={onSearchValueChange}

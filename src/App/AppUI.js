@@ -4,7 +4,7 @@ import { CreateTodoButton } from '../CreateTodoButton';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { Modal } from '../Modal';
-// import { TodoContext } from "../TodoContext";
+import { TodoForm } from '../TodoForm';
 
 function AppUI() {
   return(
@@ -12,9 +12,9 @@ function AppUI() {
       <TodoCounter />
       <TodoSearch />
       <TodoList />
-        <Modal>
-        <p>Escribe tu nuevo TODO</p>
-        </Modal>
+      <Modal>
+        <TodoForm />
+      </Modal>
       <CreateTodoButton
       />
     </React.Fragment>

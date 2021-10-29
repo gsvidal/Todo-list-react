@@ -2,12 +2,13 @@ li {
   position: relative;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   padding: 15px 40px;
   margin: 15px;
   border: 1px solid white;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0px 0px 0px px rgb(148, 148, 148);
+  box-shadow: 0px 0px 0px px #949494;
   text-align: left;
 }
 
@@ -15,15 +16,20 @@ span:first-of-type {
   position: absolute;
   top: calc( 50% - .7rem );
   left: 0;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url("../assets/icons/check.svg") center/cover no-repeat;
   cursor: pointer;
 }
 
 .Item--checked  {
-  color: rgb(0, 218, 0);
+  filter: brightness(0) saturate(100%) invert(82%) sepia(11%) saturate(2555%) hue-rotate(78deg) brightness(90%) contrast(78%);
 }
 
 .Text {
   margin: 0 15px;
+  word-break: break-all;
 }
 
 .Text--checked {
@@ -34,10 +40,14 @@ span:last-of-type {
   position: absolute;
   top: -0.75rem;
   right: 0;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url("../assets/icons/trash.svg") center/cover no-repeat;
   cursor: pointer;
 }
 
 span:last-of-type:hover {
-  color: red;
+  filter: invert(41%) sepia(46%) saturate(4593%) hue-rotate(334deg) brightness(105%) contrast(122%);
 }
 

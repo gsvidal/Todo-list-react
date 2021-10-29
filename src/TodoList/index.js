@@ -19,14 +19,17 @@ function TodoList() {
   const filteredTotal = todosFiltered.length;
   return (
     <section>
-    
       {error && <p>Hubo un error</p>}
       {loading && <p>Estamos cargando...</p>}
-      {(!loading && !todos.length && !error) && <p>Crea tu primer TODO!</p> }
+      {(!loading && !todos.length && !error) && 
+        <p className="TodoListEmpty">Crea tu primer TODO!</p> 
+      }
       <ul>
-        { searchValue && <h2>
-        Has completado {filteredCompleted} de {filteredTotal} TODO{filteredTotal !== 1 && `s`} <strong>FILTRADO{filteredTotal !== 1 && `s`}</strong> 
-      </h2> }
+        { (searchValue && todos.length > 0) && 
+          <h2 className="FilteredTodosCounter">
+          You've completed {filteredCompleted} of {filteredTotal} <strong>FILTERED</strong>  TODO{filteredTotal !== 1 && `s`} 
+          </h2> 
+        }
       
         {todosFiltered
           .map(todo => 

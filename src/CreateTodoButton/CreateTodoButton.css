@@ -2,19 +2,27 @@ body {
   position: relative;
 }
 
-button {
+.CreateTodoButton {
   --size: 50px;
 }
 
-button {
+.CreateTodoButton {
   position: absolute;
   bottom: calc( -1 * var(--size) / 2 );
   right: calc( -1 * var(--size) / 2 );
-  /* z-index: 1; */
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
   border: 1px solid white;
   font-size: calc( 1.3 * var(--size) / 2 );
   background-color: rgb(255, 185, 185);
+  transition: transform .05s ease-in-out;
+}
+
+.CreateTodoButton:hover {
+  background-color: rgb(255, 130, 130);
+}
+.CreateTodoButton:active {
+  transform: scale(1.25);
+  background-color: rgb(255, 225, 225);
 }

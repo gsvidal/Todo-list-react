@@ -7,12 +7,12 @@ function TodoItem(props) {
       <span 
         className={`Item ${props.completed && "Item--checked"}`} 
         onClick={props.onComplete}
-        >Done</span>
+        ></span>
       <p className={`Text ${props.completed && `Text--checked`}`}>{props.text}</p> 
       <span
         className="Icon Icon--delete"
         onClick={props.onDelete}
-      >X</span>
+      ></span>
     </li>
   );
 }
