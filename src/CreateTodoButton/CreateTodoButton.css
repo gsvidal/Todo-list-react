@@ -10,6 +10,7 @@ button {
   position: absolute;
   bottom: calc( -1 * var(--size) / 2 );
   right: calc( -1 * var(--size) / 2 );
+  /* z-index: 1; */
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
