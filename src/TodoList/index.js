@@ -19,10 +19,10 @@ function TodoList() {
   const filteredTotal = todosFiltered.length;
   return (
     <section>
-      {error && <p>Hubo un error</p>}
-      {loading && <p>Estamos cargando...</p>}
+      {error && <p>An error happened</p>}
+      {loading && <p>Loading...</p>}
       {(!loading && !todos.length && !error) && 
-        <p className="TodoListEmpty">Crea tu primer TODO!</p> 
+        <p className="TodoListEmpty">Create your first TODO!</p> 
       }
       <ul>
         { (searchValue && todos.length > 0) && 

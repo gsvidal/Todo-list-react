@@ -6,8 +6,8 @@
   min-width: 90%;
   min-height: 180px;
   padding: 20px;
-  background-color: white;
   border-radius: 8px;
+  background-color: white;
   font-size: 1.8rem;
   font-weight: 700;
 }
@@ -52,3 +52,12 @@
 .button-closeModal:active {
   background-color: rgb(255, 122, 122);
 }
+.todo-msg--error {
+  font-size: 1.5rem;
+  color:rgb(233, 70, 70);
+}
+.todo-msg--success {
+  font-size: 1.5rem;
+  color:rgb(26, 211, 26);
+}
+

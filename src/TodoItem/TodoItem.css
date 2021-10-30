@@ -13,10 +13,10 @@ li {
 }
 
 span:first-of-type {
+  display: inline-block;
   position: absolute;
   top: calc( 50% - .7rem );
   left: 0;
-  display: inline-block;
   width: 20px;
   height: 20px;
   background: url("../assets/icons/check.svg") center/cover no-repeat;
@@ -37,10 +37,10 @@ span:first-of-type {
 }
 
 span:last-of-type {
+  display: inline-block;
   position: absolute;
   top: -0.75rem;
   right: 0;
-  display: inline-block;
   width: 20px;
   height: 20px;
   background: url("../assets/icons/trash.svg") center/cover no-repeat;

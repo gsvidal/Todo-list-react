@@ -12,17 +12,17 @@ body {
   right: calc( -1 * var(--size) / 2 );
   width: var(--size);
   height: var(--size);
-  border-radius: 50%;
   border: 1px solid white;
+  border-radius: 50%;
+  background-color: rgb(192, 154, 255);
   font-size: calc( 1.3 * var(--size) / 2 );
-  background-color: rgb(255, 185, 185);
   transition: transform .05s ease-in-out;
 }
 
 .CreateTodoButton:hover {
-  background-color: rgb(255, 130, 130);
+  background-color: rgb(158, 54, 255);
 }
 .CreateTodoButton:active {
-  transform: scale(1.25);
   background-color: rgb(255, 225, 225);
+  transform: scale(1.25);
 }

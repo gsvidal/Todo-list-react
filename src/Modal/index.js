@@ -19,7 +19,6 @@ function Modal({ children }) {
   } else {
     return null;
   }
-  
 }
 
 export { Modal };

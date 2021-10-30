@@ -5,6 +5,7 @@ import './TodoForm.css'
 function TodoForm() {
   const [newTodoValue, setNewTodoValue] = React.useState("");
   const [emptyTodo, setEmptyTodo] = React.useState(false);
+  const [successTodo, setSuccessTodo] = React.useState(false);
 
   const {
     openModal,
@@ -14,13 +15,20 @@ function TodoForm() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    event.target[0].value === "" ? setEmptyTodo(true) : addTodos(newTodoValue);
+    if(event.target[0].value === "") {
+      setEmptyTodo(true);
+      setSuccessTodo(false);
+    } else {
+      addTodos(newTodoValue);
+      setSuccessTodo(true);
+    }
     setNewTodoValue("");
   }
 
   const onChange = (event) => {
     setNewTodoValue(event.target.value);
-    setEmptyTodo(false)
+    setEmptyTodo(false);
+    setSuccessTodo(false)
   }
 
   return(
@@ -47,8 +55,11 @@ function TodoForm() {
           </button>
         </div>
         {emptyTodo &&
-      <p>Empty To Do's are not allowed!</p>
-      }
+          <p className="todo-msg--error">Empty To Do's are not allowed!</p>
+        }
+        {successTodo &&
+          <p className="todo-msg--success">To Do added successfully!</p>
+        }
       </div>
     </form>
 
