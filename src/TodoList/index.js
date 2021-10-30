@@ -2,6 +2,7 @@ import React from 'react';
 import { TodoItem } from '../TodoItem';
 import { TodoContext } from '../TodoContext';
 import './TodoList.css';
+import { MyLoader } from '../MyLoader';
 
 function TodoList() {
   const {
@@ -20,7 +21,7 @@ function TodoList() {
   return (
     <section>
       {error && <p>An error happened</p>}
-      {loading && <p>Loading...</p>}
+      {loading && <MyLoader />}
       {(!loading && !todos.length && !error) && 
         <p className="TodoListEmpty">Create your first TODO!</p> 
       }
