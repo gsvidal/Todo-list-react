@@ -13,6 +13,11 @@ function TodoProvider(props) {
   const [searchValue, setSearchValue] = React.useState("");
   //Modal states
   const [openModal, setOpenModal] = React.useState(false);
+  //Form states
+  const [newTodoValue, setNewTodoValue] = React.useState("");
+  const [emptyTodo, setEmptyTodo] = React.useState(false);
+  const [successTodo, setSuccessTodo] = React.useState(false);
+  const [animationButton, setAnimationButton] = React.useState(true);
 
   //TodoSearch
   const completedTodos = todos.filter(todo => todo.completed).length;
@@ -55,7 +60,15 @@ function TodoProvider(props) {
       deleteTodos,
       addTodos,
       openModal,
-      setOpenModal
+      setOpenModal,
+      newTodoValue,
+      setNewTodoValue,
+      emptyTodo,
+      setEmptyTodo,
+      successTodo,
+      setSuccessTodo,
+      animationButton, 
+      setAnimationButton
     }}>
       {props.children}
     </TodoContext.Provider>

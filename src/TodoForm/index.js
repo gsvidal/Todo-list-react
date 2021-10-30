@@ -3,14 +3,18 @@ import { TodoContext } from '../TodoContext';
 import './TodoForm.css'
 
 function TodoForm() {
-  const [newTodoValue, setNewTodoValue] = React.useState("");
-  const [emptyTodo, setEmptyTodo] = React.useState(false);
-  const [successTodo, setSuccessTodo] = React.useState(false);
 
   const {
     openModal,
     setOpenModal,
     addTodos,
+    newTodoValue,
+    setNewTodoValue,
+    emptyTodo,
+    setEmptyTodo,
+    successTodo,
+    setSuccessTodo,
+    setAnimationButton
   } = React.useContext(TodoContext);
 
   const onSubmit = (event) => {
@@ -21,6 +25,7 @@ function TodoForm() {
     } else {
       addTodos(newTodoValue);
       setSuccessTodo(true);
+      setAnimationButton(false);
     }
     setNewTodoValue("");
   }

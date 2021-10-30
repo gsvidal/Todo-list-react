@@ -6,7 +6,8 @@ import { TodoContext } from "../TodoContext";
 function CreateTodoButton() {
   const {
     openModal,
-    setOpenModal
+    setOpenModal,
+    animationButton
   } = React.useContext(TodoContext);
 
   const onClickButton = () => {
@@ -15,7 +16,7 @@ function CreateTodoButton() {
 
   return (
     <button
-      className="CreateTodoButton"
+      className={`CreateTodoButton ${!animationButton && `CreateTodoButton-stop-anim`}`}
       onClick={onClickButton}
     >+</button>
   );
